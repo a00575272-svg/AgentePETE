@@ -1,1 +1,53 @@
+Actividad 3 — Definición de idea por equipo
+En equipo, definan una primera idea de aplicación.
+Ficha de definición inicial
+Nombre tentativo de la aplicación: AgentePETE
+Integrantes del equipo:
+Christian Mojica
+Javier Lopez Fuentes
+Juan Pablo Padilla Ramirez
+Emilio Ceja Castillo
+Alonso Gómez González
+Eugenio Aguilera Nieto
+Victor Manuel Corrales Flores 
+Fernando Hernández Melo
+
+
+Usuario objetivo: Público general.
+Problema o necesidad que busca resolver: El desorden y la falta de organización personal al gestionar tareas, actividades y tiempo, dificultando la productividad y el seguimiento de pendientes. 
+Descripción breve de la solución: Crear un asistente personal y personalizado mediante una interfaz interactiva
+Funcionalidades mínimas del MVP:
+ Capaz de dar respuestas coherentes a las preguntas, en base a información guardada (como base de datos)
+ Interfaz intuitiva.
+ Capaz de guardar información de manera local para luego hacer referencia a ella
+Funcionalidades deseables si hay tiempo:
+ Que cuente una representación con un modelo 3D.
+ Que se le ingrese un sistema de speech to text.
+¿Cómo se usará la IA generativa en la app?
+Será capaz de razonar, interpretar y decidir en base a las necesidades del usuario, para determinar qué herramientas usar para satisfacer las necesidades y proveer respuestas en texto sobre lo que el agente realizó.
+¿Qué información escribirá el usuario en la interfaz?
+La tarea que el usuario quiere realizar en forma de texto
+¿Qué respuesta o resultado mostrará la aplicación?
+
+
+Dependiendo de lo que el usuario le escriba, le pida o de lo que le pregunte.
+
+
+
+Actividad 4 — Definición del MVP
+El MVP es la versión mínima funcional de la aplicación.
+No debe incluir todo lo que imaginan, sino solo lo esencial para demostrar que la idea funciona.
+Su MVP deberá responder estas preguntas:
+¿Cuál es la acción principal que podrá hacer el usuario?
+Generar prompts.
+¿Qué entrada dará el usuario?
+Prompts de texto.
+¿Qué hará la aplicación con esa entrada?
+Generar una respuesta racional al prompt y en caso de que aplique realizar una función como crear un evento en el calendario
+¿Cómo intervendrá Ollama?
+Es donde se alojara nuestra inteligencia Artificial generativa
+¿Qué resultado verá el usuario?
+El usuario verá un desglose de su calendario, actividades y un acomodo de su horario/lo que se pida. 
+¿Qué parte de la aplicación se mostrará en la interfaz gráfica?
+Historial del chat actual y vista del calendario.
 
