@@ -371,6 +371,7 @@ src/ui/RecommendationPanel.cpp
 - Acción visual de exportar .ics.
 
 ### Rol 5 — Domain Developer + Developer de agenda y eventos
+### Javier Lopez Fuentes
 
 #### Misión
 
