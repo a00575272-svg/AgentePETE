@@ -1,3 +1,34 @@
-.vscode
+# VS Code
+.vscode/
+
+# qmake / build artifacts
+Makefile
+Makefile.Debug
+Makefile.Release
+.qmake.stash
+*.o
+*.obj
+moc_*.cpp
+qrc_*.cpp
+ui_*.h
+
+# Build output directories
+build/
 debug/
 release/
+out/
+cmake-build-*/
+
+# Executables
+*.exe
+*.app
+AgentePETE
+
+# Qt Creator
+*.pro.user
+*.pro.user.*
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
