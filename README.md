@@ -12,6 +12,22 @@
 - Victor Manuel Corrales Flores 
 - Fernando Hernández Melo
 
+## Asginación de Roles
+
+
+| No. | Integrante   | Responsabilidad concreta |
+|---:|----------|---------------------------|
+| 1 | Chris    | Diseñar MainWindow, entrada de prompt, botón de envío y área de respuesta. |
+| 2 | Fernando | Implementar ChatController y flujo entre UI, dominio y proveedor de IA. |
+| 3 | Alonso   | Crear clases Prompt y Message con validaciones básicas. |
+| 4 | Eugenio  | Gestionar historial, Conversation y ConversationStats. |
+| 5 | Javier   | Implementar Calendario, día y tareas. |
+| 6 | Manolo   | Implementar OllamaProvider con HTTP/JSON usando Qt Network. |
+| 7 | JP       | Crear excepciones, validación de prompt vacío, conexión y JSON inválido. |
+| 8 | Emilio   | Memoria persistente: archivos de configuración, usuarios, etc. |
+|
+
+
 ## Usuario objetivo
 
 Público general
