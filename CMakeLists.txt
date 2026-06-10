@@ -15,8 +15,12 @@ add_executable(AgentePETE
     src/main.cpp
     src/MainWindow.cpp
     src/ChatController.cpp
+    src/Prompt.cpp
+    src/Message.cpp
     include/MainWindow.h
     include/ChatController.h
+    include/Prompt.h
+    include/Message.h
 )
 
 target_link_libraries(AgentePETE
