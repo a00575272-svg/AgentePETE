@@ -7,7 +7,7 @@ set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTOUIC ON)
 set(CMAKE_AUTORCC ON)
 
-find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Widgets Network)
 
 include_directories(include)
 
@@ -21,6 +21,8 @@ add_executable(AgentePETE
     include/ChatController.h
     include/Prompt.h
     include/Message.h
+    src/OllamaProvider.cpp
+    include/OllamaProvider.h
 )
 
 target_link_libraries(AgentePETE
@@ -28,4 +30,5 @@ target_link_libraries(AgentePETE
         Qt6::Core
         Qt6::Gui
         Qt6::Widgets
+        Qt6::Network
 )
