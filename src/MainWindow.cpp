@@ -1,5 +1,7 @@
 #include "MainWindow.h"
 #include "ChatController.h"
+#include "Message.h"
+#include "Prompt.h"
 
 #include <QVBoxLayout>
 #include <QHBoxLayout>
@@ -54,15 +56,19 @@ MainWindow::~MainWindow()
 
 void MainWindow::onSendClicked()
 {
-    QString text = inputLine_->text().trimmed();
-    if (text.isEmpty())
-        return;
+    const QString rawText = inputLine_->text();
+    const Prompt prompt(rawText);
+    const QString response = controller_->processPrompt(rawText);
 
-    //QString response = controller_->processPrompt(text);
+    const QString visibleUserPrompt = prompt.isValid() ? prompt.text() : "[prompt vacío]";
 
-    historyText_->append("Tú: " + text);
-    //historyText_->append("AgentePETE: " + response);
+    historyText_->append(Message::fromUser(visibleUserPrompt).toDisplayString());
+
+    if (prompt.isValid())
+        historyText_->append(Message::fromAssistant(response).toDisplayString());
+    else
+        historyText_->append(Message::error(response).toDisplayString());
+
     historyText_->append("");
-
     inputLine_->clear();
 }
