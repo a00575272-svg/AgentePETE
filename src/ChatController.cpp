@@ -1,11 +1,35 @@
 #include "ChatController.h"
+#include "Prompt.h"
 
-QString ChatController::processPrompt(const QString &prompt) const
+QString ChatController::processPrompt(const QString &rawPrompt) const
 {
-    if (prompt.trimmed().isEmpty())
-        return "[Simulado] Por favor escribe algo para que pueda ayudarte.";
+    Prompt prompt(rawPrompt);
 
-    const QString lower = prompt.toLower();
+    if (!prompt.isValid())
+        return prompt.validationError();
+
+    // Esta línea deja listo el texto que se debe mandar a Ollama.
+    // Cuando se conecte OllamaProvider, se puede usar:
+    // provider.generateResponse(prompt.ollamaPrompt());
+    const QString promptForOllama = prompt.ollamaPrompt();
+    Q_UNUSED(promptForOllama);
+
+    return buildSimulatedResponse(prompt);
+}
+
+QString ChatController::preparePromptForOllama(const QString &rawPrompt) const
+{
+    Prompt prompt(rawPrompt);
+
+    if (!prompt.isValid())
+        return "";
+
+    return prompt.ollamaPrompt();
+}
+
+QString ChatController::buildSimulatedResponse(const Prompt &prompt) const
+{
+    const QString lower = prompt.text().toLower();
 
     if (containsKeyword(lower, "hola"))
         return "[Simulado] ¡Hola! Soy AgentePETE, tu asistente personal. ¿En qué te puedo ayudar hoy?";
