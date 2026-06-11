@@ -10,7 +10,7 @@
 #include "ChatController.h"
 #include <string>
 
-class ChatWindow : public QMainWindow {
+class ChatWindow : public QMainWindow, public ChatController{
     Q_OBJECT
 //private:
     //std::string modelsAvailable[] = {string("gemma3:4b")};

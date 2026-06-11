@@ -1372,6 +1372,10 @@ release/ChatWindow.o: src/ChatWindow.cpp C:/Qt/6.11.0/mingw_64/include/QtWidgets
 		C:/Qt/6.11.0/mingw_64/include/QtGui/qinputmethod.h \
 		C:/Qt/6.11.0/mingw_64/include/QtCore/qlocale.h \
 		C:/Qt/6.11.0/mingw_64/include/QtGui/qguiapplication_platform.h \
+		C:/Qt/6.11.0/mingw_64/include/QtWidgets/QMessageBox \
+		C:/Qt/6.11.0/mingw_64/include/QtWidgets/qmessagebox.h \
+		C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdialog.h \
+		C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
 		C:/Qt/6.11.0/mingw_64/include/QtWidgets/QHBoxLayout \
 		C:/Qt/6.11.0/mingw_64/include/QtWidgets/QWidget \
 		C:/Qt/6.11.0/mingw_64/include/QtGui/QFont \
@@ -1379,6 +1383,7 @@ release/ChatWindow.o: src/ChatWindow.cpp C:/Qt/6.11.0/mingw_64/include/QtWidgets
 		C:/Qt/6.11.0/mingw_64/include/QtWidgets/qmenu.h \
 		C:/Qt/6.11.0/mingw_64/include/QtWidgets/QMenuBar \
 		C:/Qt/6.11.0/mingw_64/include/QtWidgets/qmenubar.h \
+		C:/Qt/6.11.0/mingw_64/include/QtCore/QDebug \
 		include/ChatWindow.h \
 		C:/Qt/6.11.0/mingw_64/include/QtWidgets/QLabel \
 		C:/Qt/6.11.0/mingw_64/include/QtWidgets/qlabel.h \

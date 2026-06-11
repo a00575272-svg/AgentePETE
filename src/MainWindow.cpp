@@ -8,7 +8,7 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , controller_(new ChatController)
+    //, controller_(new ChatController)
 {
     titleLabel_    = new QLabel("AgentePETE");
     subtitleLabel_ = new QLabel("Tu asistente personal de organización");
@@ -58,10 +58,10 @@ void MainWindow::onSendClicked()
     if (text.isEmpty())
         return;
 
-    QString response = controller_->processPrompt(text);
+    //QString response = controller_->processPrompt(text);
 
     historyText_->append("Tú: " + text);
-    historyText_->append("AgentePETE: " + response);
+    //historyText_->append("AgentePETE: " + response);
     historyText_->append("");
 
     inputLine_->clear();

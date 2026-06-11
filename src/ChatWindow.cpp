@@ -1,9 +1,11 @@
 #include <QVBoxLayout>
+#include <QMessageBox>
 #include <QHBoxLayout>
 #include <QWidget>
 #include <QFont>
 #include <QMenu>
 #include <QMenuBar>
+#include <QDebug>
 
 #include "ChatWindow.h"
 
@@ -11,6 +13,7 @@
 
 ChatWindow::ChatWindow(QWidget *parent):
     QMainWindow(parent),
+    ChatController(),
     titleLabel(new QLabel("Chat con Ollama", this)),
     promptLabel(new QLabel("Promp:", this)),
     modelLabel(new QLabel("Modelo:", this)),
@@ -77,6 +80,16 @@ ChatWindow::~ChatWindow(){
     // nada
 }
 
-void ChatWindow::sendPrompt(){
 
+void ChatWindow::sendPrompt(){
+    QString inputUser = prompLineEdit->text().trimmed();
+    if (inputUser.isEmpty()) {
+        QMessageBox::warning(this, "ERROR", "Tu prompt no puede estar vacio");
+        
+        prompLineEdit->setFocus();
+        return;
+    }
+    // mandar a llamar la funcion para contruir todo el prompt para ollama
+    // recibir la respuesta del modelo y mostrarla
+    modelAnswer->setPlainText(inputUser);
 }
