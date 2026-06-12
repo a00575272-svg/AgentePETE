@@ -74,7 +74,14 @@ ChatWindow::ChatWindow(QWidget *parent):
 
     central->setLayout(vbox);
 
-    persistence.initialize();
+   persistence.initialize();
+
+UserProfile profile;
+
+profile.setUserName("Usuario");
+profile.setPreferredModel("gemma3:4b");
+
+persistence.saveUserProfile(profile);
 
 }
 
