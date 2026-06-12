@@ -10,7 +10,7 @@
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
-    , controller_(new ChatController)
+    //, controller_(new ChatController)
 {
     titleLabel_    = new QLabel("AgentePETE");
     subtitleLabel_ = new QLabel("Tu asistente personal de organización");

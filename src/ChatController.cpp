@@ -1,10 +1,11 @@
 #include "ChatController.h"
 #include "Prompt.h"
 
+ChatController::ChatController(){}
+
 QString ChatController::processPrompt(const QString &rawPrompt) const
 {
     Prompt prompt(rawPrompt);
-
     if (!prompt.isValid())
         return prompt.validationError();
 
@@ -46,7 +47,10 @@ QString ChatController::buildSimulatedResponse(const Prompt &prompt) const
     return "[Simulado] Recibido. Aún estoy aprendiendo a manejar ese tipo de solicitud. ¡Seguimos mejorando!";
 }
 
-bool ChatController::containsKeyword(const QString &text, const QString &keyword) const
-{
-    return text.contains(keyword, Qt::CaseInsensitive);
+bool ChatController::containsKeyword(const QString& text, const QString& keyword) const {
+    return text.contains(keyword);
+}
+
+ChatController::~ChatController(){
+    // default
 }
