@@ -14,10 +14,6 @@ enum class now
     Year
 };
 
-
-
-
-
 int nowDMY(now part)
 {
     auto now = std::chrono::system_clock::now();
@@ -38,7 +34,7 @@ int nowDMY(now part)
         return local_tm.tm_year + 1900;
     }
 
-    return 0; // should never happen
+    return 0;
 }
 
 std::string Task::buildFileName()
@@ -84,7 +80,6 @@ void Task::saveEntry()
 
 void Task::taskDelet()
 {
-    // Reconstruct the exact line that saveEntry() wrote
     std::ostringstream target;
     target << getDay() << ","
         << getMonth() << ","
@@ -93,7 +88,6 @@ void Task::taskDelet()
         << getDescriptionTask() << "\n";
     std::string targetLine = target.str();
 
-    // Read all lines from the file
     std::ifstream fileIn(dayFileName);
     if (!fileIn.is_open())
     {
@@ -107,7 +101,6 @@ void Task::taskDelet()
         lines.push_back(line + "\n");
     fileIn.close();
 
-    // Find and remove the first occurrence of the target line
     bool found = false;
     for (auto it = lines.begin(); it != lines.end(); ++it)
     {
@@ -125,7 +118,6 @@ void Task::taskDelet()
         return;
     }
 
-    // Rewrite the file with the remaining lines
     std::ofstream fileOut(dayFileName, std::ios::out | std::ios::trunc);
     if (!fileOut.is_open())
     {
@@ -137,11 +129,9 @@ void Task::taskDelet()
         fileOut << l;
 
     fileOut.close();
-
-   
 }
 
-// Private constructor � skips saveEntry()
+// Private constructor - skips saveEntry()
 Task::Task(int day, int month, int year,
     const std::string& title,
     const std::string& description,
@@ -157,7 +147,6 @@ std::vector<Task> Task::loadAllEntries()
 
     for (const auto& dirEntry : std::filesystem::directory_iterator("taskDir"))
     {
-        // Skip anything that isn't a .txt file
         if (dirEntry.path().extension() != ".txt")
             continue;
 
@@ -204,5 +193,3 @@ std::vector<Task> Task::loadAllEntries()
 
     return entries;
 }
-
-
