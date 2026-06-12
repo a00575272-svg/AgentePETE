@@ -4,13 +4,14 @@
 #include <QJsonArray>
 
 #include "UserProfile.h"
+#include "IDataStorage.h"
 
-class PersistenceManager
+class PersistenceManager : public IDataStorage
 {
 public:
     PersistenceManager();
 
-    bool initialize();
+    bool initialize() override;
 
     bool saveUserProfile(
             const UserProfile &profile);
@@ -20,6 +21,10 @@ public:
     bool saveConversation(
             const QString &prompt,
             const QString &response);
+
+    // SOBRECARGA
+    bool saveConversation(
+            const QString &prompt);
 
     QJsonArray loadHistory();
 
