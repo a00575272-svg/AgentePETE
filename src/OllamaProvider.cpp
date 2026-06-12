@@ -55,10 +55,16 @@ QString OllamaProvider::enviarMensaje(const QString &mensaje)
     cuerpo["prompt"] = mensaje;
     cuerpo["stream"] = false;   // false = esperar respuesta completa antes de recibirla
 
+    // 1.1. Definir la configuracion del modelo
+    QJsonObject options;
+    options["num_predict"] = 1024;
+
+    cuerpo["options"] = options;
+
     QByteArray jsonBytes = QJsonDocument(cuerpo).toJson(QJsonDocument::Compact);
 
     // 2. Configurar la petición HTTP
-    QNetworkRequest request(QUrl(OLLAMA_URL));
+    QNetworkRequest request = QNetworkRequest(QUrl(OLLAMA_URL));
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
     // 3. Enviar la petición (POST)

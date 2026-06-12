@@ -2,17 +2,21 @@
 #include "Prompt.h"
 #include "PeteExceptions.h"
 
-ChatController::ChatController(){}
+ChatController::ChatController(){
+    // nada
+}
 
-QString ChatController::processPrompt(const QString &rawPrompt) const
+QString ChatController::processPrompt(const QString &rawPrompt) 
 {
+    //Seleccionar el modelo
     try {
         Prompt prompt(rawPrompt);
         if (!prompt.isValid())
             return prompt.validationError();
         const QString promptForOllama = prompt.ollamaPrompt();
         Q_UNUSED(promptForOllama);
-        return buildSimulatedResponse(prompt);
+        QString ollamaAnswer = ollama.enviarMensaje(promptForOllama);
+        return ollamaAnswer;
     } catch (const PromptVacioException &e) {
         return QString("[Error] ") + e.what();
     } catch (const ErrorConexionException &e) {
@@ -22,16 +26,9 @@ QString ChatController::processPrompt(const QString &rawPrompt) const
     } catch (const std::exception &e) {
         return QString("[Error inesperado] ") + e.what();
     }
-    if (!prompt.isValid())
-        return prompt.validationError();
-
     // Esta línea deja listo el texto que se debe mandar a Ollama.
     // Cuando se conecte OllamaProvider, se puede usar:
     // provider.generateResponse(prompt.ollamaPrompt());
-    const QString promptForOllama = prompt.ollamaPrompt();
-    Q_UNUSED(promptForOllama);
-
-    return buildSimulatedResponse(prompt);
 }
 
 QString ChatController::preparePromptForOllama(const QString &rawPrompt) const
