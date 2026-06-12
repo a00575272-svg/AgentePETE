@@ -1,0 +1,9 @@
+#pragma once
+
+class IDataStorage
+{
+public:
+    virtual bool initialize() = 0;
+
+    virtual ~IDataStorage() {}
+};
