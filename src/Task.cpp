@@ -145,6 +145,12 @@ std::vector<Task> Task::loadAllEntries()
 {
     std::vector<Task> entries;
 
+    if (!std::filesystem::exists("taskDir") || !std::filesystem::is_directory("taskDir"))
+    {
+        std::cerr << "Directory 'taskDir' does not exist or is not a directory.\n";
+        return entries;
+    }
+
     for (const auto& dirEntry : std::filesystem::directory_iterator("taskDir"))
     {
         if (dirEntry.path().extension() != ".txt")
