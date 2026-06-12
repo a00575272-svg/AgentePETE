@@ -82,11 +82,22 @@ profile.setUserName("Usuario");
 profile.setPreferredModel("gemma3:4b");
 
 persistence.saveUserProfile(profile);
+    persistence = new PersistenceManager();
+
+persistence->initialize();
+
+UserProfile profile;
+
+profile.setUserName("Usuario");
+profile.setPreferredModel("gemma3:4b");
+
+persistence->saveUserProfile(profile);
 
 }
 
-ChatWindow::~ChatWindow(){
-    // nada
+ChatWindow::~ChatWindow()
+{
+    delete persistence;
 }
 
 
