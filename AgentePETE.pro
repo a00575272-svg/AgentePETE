@@ -16,8 +16,10 @@ SOURCES += \
     src/calendarwin.cpp \
     src/dayagendadialog.cpp \
     src/newtaskdialog.cpp \
-    src/OllamaProvider.cpp
-    src/DayMonYear.cpp
+    src/OllamaProvider.cpp \
+    src/DayMonYear.cpp \
+    src/PersistenceManager.cpp \
+    src/UserProfile.cpp
 
 HEADERS += \
     include/MainWindow.h \
@@ -29,10 +31,12 @@ HEADERS += \
     include/dayagendadialog.h \
     include/newtaskdialog.h \
     include/OllamaProvider.h \
-    include/PeteExceptions.h
+    include/PeteExceptions.h \
+    include/DayMonYear.h \
+    include/PersistenceManager.h \
+    include/UserProfile.h
 
 FORMS += \
     calendarwin.ui \
     dayagendadialog.ui \
     newtaskdialog.ui
-    include/DayMonYear.h
