@@ -1,5 +1,5 @@
 #include "UserProfile.h"
-
+#include <QJsonObject>
 UserProfile::UserProfile()
 {
     userName = "Usuario";
