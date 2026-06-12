@@ -89,6 +89,13 @@ UserProfile PersistenceManager::loadUserProfile()
 bool PersistenceManager::saveConversation(
         const QString &prompt,
         const QString &response)
+bool PersistenceManager::saveConversation(
+        const QString &prompt)
+{
+    return saveConversation(
+                prompt,
+                "[Sin respuesta]");
+}
 {
     QJsonArray history =
             loadHistory();
