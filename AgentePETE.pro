@@ -34,7 +34,8 @@ HEADERS += \
     include/PeteExceptions.h \
     include/DayMonYear.h \
     include/PersistenceManager.h \
-    include/UserProfile.h
+    include/UserProfile.h \
+    include/IDataStorage.h
 
 FORMS += \
     calendarwin.ui \
