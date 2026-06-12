@@ -15,6 +15,7 @@ public:
 private:
     QString buildSimulatedResponse(const Prompt &prompt) const;
     bool containsKeyword(const QString &text, const QString &keyword) const;
+    bool tryParseAndCreateTask(const QString &prompt, QString &outMessage);
 
     OllamaProvider ollamaProvider_;
 };
