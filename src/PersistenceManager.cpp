@@ -34,7 +34,16 @@ bool PersistenceManager::initialize()
 
     if(!dir.exists(dataFolder()))
     {
-        return dir.mkpath(dataFolder());
+        dir.mkpath(dataFolder());
+    }
+
+    QFile history(historyFile());
+
+    if(!history.exists())
+    {
+        history.open(QIODevice::WriteOnly);
+        history.write("[]");
+        history.close();
     }
 
     return true;
