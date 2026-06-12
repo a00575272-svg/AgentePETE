@@ -154,7 +154,14 @@ Task::Task(int day, int month, int year,
 
 std::vector<Task> Task::loadAllEntries()
 {
+    
     std::vector<Task> entries;
+
+    if (!std::filesystem::exists("taskDir") || !std::filesystem::is_directory("taskDir"))
+    {
+        std::cerr << "Directory 'taskDir' does not exist or is not a directory.\n";
+        
+    }
 
     for (const auto& dirEntry : std::filesystem::directory_iterator("taskDir"))
     {
@@ -205,5 +212,14 @@ std::vector<Task> Task::loadAllEntries()
 
     return entries;
 }
+
+/*std::vector<Task> all = Task::loadAllEntries();
+for (auto& entry : all)
+    std::cout << entry.getDay() << "/" << entry.getMonth() << "/" << entry.getYear()
+    << " - " << entry.getTitleTask() << " - " << entry.getDescriptionTask() << "\n";
+
+
+all[1].getTitleTask();
+*/
 
 
