@@ -74,6 +74,8 @@ ChatWindow::ChatWindow(QWidget *parent):
 
     central->setLayout(vbox);
 
+    persistence.initialize();
+
 }
 
 ChatWindow::~ChatWindow(){
@@ -81,15 +83,39 @@ ChatWindow::~ChatWindow(){
 }
 
 
-void ChatWindow::sendPrompt(){
-    QString inputUser = prompLineEdit->text().trimmed();
-    if (inputUser.isEmpty()) {
-        QMessageBox::warning(this, "Error", "Tu prompt no puede estar vacio");
+void ChatWindow::sendPrompt()
+{
+    QString inputUser =
+            prompLineEdit->text().trimmed();
+
+    if (inputUser.isEmpty())
+    {
+        QMessageBox::warning(
+                    this,
+                    "Error",
+                    "Tu prompt no puede estar vacio");
+
         prompLineEdit->setFocus();
         return;
     }
-    inputUser = processPrompt(inputUser);
-    // mandar a llamar la funcion para contruir todo el prompt para ollama
-    // recibir la respuesta del modelo y mostrarla
-    modelAnswer->setPlainText(inputUser);
+
+    QString originalPrompt =
+            inputUser;
+
+    QString response =
+            processPrompt(originalPrompt);
+
+    modelAnswer->append(
+                "Usuario:\n" +
+                originalPrompt + "\n");
+
+    modelAnswer->append(
+                "AgentePETE:\n" +
+                response + "\n");
+
+    persistence.saveConversation(
+                originalPrompt,
+                response);
+
+    prompLineEdit->clear();
 }
