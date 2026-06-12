@@ -9,6 +9,7 @@
 #include <QComboBox>
 #include "ChatController.h"
 #include <string>
+#include "PersistenceManager.h"
 
 class ChatWindow : public QMainWindow, public ChatController{
     Q_OBJECT
@@ -31,4 +32,6 @@ private:
     QComboBox   *modelCombobox;
     QLineEdit   *prompLineEdit;
     QTextEdit   *modelAnswer;
+PersistenceManager persistence;
+    
 };
