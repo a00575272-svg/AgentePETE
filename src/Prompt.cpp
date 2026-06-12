@@ -62,7 +62,7 @@ QString Prompt::validationError() const
 
 int Prompt::maxLength()
 {
-    return 500;
+    return 50000;
 }
 
 QString Prompt::normalize(const QString &rawText)

@@ -9,7 +9,6 @@
 
 #include "ChatWindow.h"
 
-// prueba de la clase OllamaProvider
 
 ChatWindow::ChatWindow(QWidget *parent):
     QMainWindow(parent),
@@ -53,7 +52,9 @@ ChatWindow::ChatWindow(QWidget *parent):
     // Selector mínimo de modelo
     QHBoxLayout *modelBox = new QHBoxLayout;
     modelBox->addWidget(modelLabel);
-    modelCombobox->addItem("gemma3:4b");
+    for(int i = 0; i<n; i++){
+        modelCombobox->addItem(modelsList[i]);
+    }
     modelBox->addWidget(modelCombobox);
 
     vbox->addLayout(modelBox);
@@ -82,14 +83,18 @@ ChatWindow::~ChatWindow(){
 
 
 void ChatWindow::sendPrompt(){
+    ollama.setModelo(modelCombobox->currentText());
+    modelAnswer->setPlainText("Generando respuesta...");
     QString inputUser = prompLineEdit->text().trimmed();
     if (inputUser.isEmpty()) {
         QMessageBox::warning(this, "Error", "Tu prompt no puede estar vacio");
         prompLineEdit->setFocus();
         return;
     }
-    inputUser = processPrompt(inputUser);
+    QString ans = processPrompt(inputUser);
     // mandar a llamar la funcion para contruir todo el prompt para ollama
     // recibir la respuesta del modelo y mostrarla
-    modelAnswer->setPlainText(inputUser);
+    modelAnswer->setPlainText(ans);
+    prompLineEdit->clear();
+    prompLineEdit->setFocus();
 }
