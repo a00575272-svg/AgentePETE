@@ -2,6 +2,8 @@
 #include "Prompt.h"
 #include "PeteExceptions.h"
 
+ChatController::ChatController(){}
+
 QString ChatController::processPrompt(const QString &rawPrompt) const
 {
     try {
@@ -20,6 +22,16 @@ QString ChatController::processPrompt(const QString &rawPrompt) const
     } catch (const std::exception &e) {
         return QString("[Error inesperado] ") + e.what();
     }
+    if (!prompt.isValid())
+        return prompt.validationError();
+
+    // Esta línea deja listo el texto que se debe mandar a Ollama.
+    // Cuando se conecte OllamaProvider, se puede usar:
+    // provider.generateResponse(prompt.ollamaPrompt());
+    const QString promptForOllama = prompt.ollamaPrompt();
+    Q_UNUSED(promptForOllama);
+
+    return buildSimulatedResponse(prompt);
 }
 
 QString ChatController::preparePromptForOllama(const QString &rawPrompt) const
@@ -51,7 +63,10 @@ QString ChatController::buildSimulatedResponse(const Prompt &prompt) const
     return "[Simulado] Recibido. Aún estoy aprendiendo a manejar ese tipo de solicitud. ¡Seguimos mejorando!";
 }
 
-bool ChatController::containsKeyword(const QString &text, const QString &keyword) const
-{
-    return text.contains(keyword, Qt::CaseInsensitive);
+bool ChatController::containsKeyword(const QString& text, const QString& keyword) const {
+    return text.contains(keyword);
+}
+
+ChatController::~ChatController(){
+    // default
 }

@@ -10,16 +10,19 @@ SOURCES += \
     src/main.cpp \
     src/MainWindow.cpp \
     src/ChatController.cpp \
+    src/ChatWindow.cpp \
     src/Prompt.cpp \
     src/Message.cpp \
     src/calendarwin.cpp \
     src/dayagendadialog.cpp \
     src/newtaskdialog.cpp \
     src/OllamaProvider.cpp
+    src/DayMonYear.cpp
 
 HEADERS += \
     include/MainWindow.h \
     include/ChatController.h \
+    include/ChatWindow.h \
     include/Prompt.h \
     include/Message.h \
     include/calendarwin.h \
@@ -32,3 +35,4 @@ FORMS += \
     calendarwin.ui \
     dayagendadialog.ui \
     newtaskdialog.ui
+    include/DayMonYear.h
