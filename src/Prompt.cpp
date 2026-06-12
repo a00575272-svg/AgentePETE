@@ -1,4 +1,5 @@
 #include "Prompt.h"
+#include "PeteExceptions.h"
 
 Prompt::Prompt()
     : text_("")
@@ -18,6 +19,7 @@ bool Prompt::setText(const QString &rawText)
     if (cleanedText.isEmpty()) {
         text_.clear();
         validationError_ = "El prompt no puede estar vacío.";
+        throw PromptVacioException();
         return false;
     }
 

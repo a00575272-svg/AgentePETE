@@ -1,11 +1,27 @@
 #include "ChatController.h"
 #include "Prompt.h"
+#include "PeteExceptions.h"
 
 ChatController::ChatController(){}
 
 QString ChatController::processPrompt(const QString &rawPrompt) const
 {
-    Prompt prompt(rawPrompt);
+    try {
+        Prompt prompt(rawPrompt);
+        if (!prompt.isValid())
+            return prompt.validationError();
+        const QString promptForOllama = prompt.ollamaPrompt();
+        Q_UNUSED(promptForOllama);
+        return buildSimulatedResponse(prompt);
+    } catch (const PromptVacioException &e) {
+        return QString("[Error] ") + e.what();
+    } catch (const ErrorConexionException &e) {
+        return QString("[Error de conexión] ") + e.what();
+    } catch (const JsonInvalidoException &e) {
+        return QString("[Error de respuesta] ") + e.what();
+    } catch (const std::exception &e) {
+        return QString("[Error inesperado] ") + e.what();
+    }
     if (!prompt.isValid())
         return prompt.validationError();
 

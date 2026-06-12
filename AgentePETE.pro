@@ -1,7 +1,7 @@
 TEMPLATE = app
 TARGET   = AgentePETE
 
-QT      += core gui widgets
+QT      += core gui widgets network
 CONFIG  += c++17
 
 INCLUDEPATH += $$PWD/include
@@ -13,6 +13,10 @@ SOURCES += \
     src/ChatWindow.cpp \
     src/Prompt.cpp \
     src/Message.cpp \
+    src/calendarwin.cpp \
+    src/dayagendadialog.cpp \
+    src/newtaskdialog.cpp \
+    src/OllamaProvider.cpp
     src/DayMonYear.cpp
 
 HEADERS += \
@@ -21,4 +25,14 @@ HEADERS += \
     include/ChatWindow.h \
     include/Prompt.h \
     include/Message.h \
+    include/calendarwin.h \
+    include/dayagendadialog.h \
+    include/newtaskdialog.h \
+    include/OllamaProvider.h \
+    include/PeteExceptions.h
+
+FORMS += \
+    calendarwin.ui \
+    dayagendadialog.ui \
+    newtaskdialog.ui
     include/DayMonYear.h
