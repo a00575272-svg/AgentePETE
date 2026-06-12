@@ -12,11 +12,13 @@ SOURCES += \
     src/ChatController.cpp \
     src/ChatWindow.cpp \
     src/Prompt.cpp \
-    src/Message.cpp
+    src/Message.cpp \
+    src/DayMonYear.cpp
 
 HEADERS += \
     include/MainWindow.h \
     include/ChatController.h \
     include/ChatWindow.h \
     include/Prompt.h \
-    include/Message.h
+    include/Message.h \
+    include/DayMonYear.h
