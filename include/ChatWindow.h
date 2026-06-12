@@ -32,6 +32,6 @@ private:
     QComboBox   *modelCombobox;
     QLineEdit   *prompLineEdit;
     QTextEdit   *modelAnswer;
-PersistenceManager persistence;
+PersistenceManager *persistence;
     
 };
