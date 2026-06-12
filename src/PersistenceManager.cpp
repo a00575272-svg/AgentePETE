@@ -40,11 +40,13 @@ bool PersistenceManager::initialize()
     QFile history(historyFile());
 
     if(!history.exists())
+{
+    if(history.open(QIODevice::WriteOnly))
     {
-        history.open(QIODevice::WriteOnly);
         history.write("[]");
         history.close();
     }
+}
 
     return true;
 }
