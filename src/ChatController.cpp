@@ -2,15 +2,16 @@
 #include "Prompt.h"
 #include "PeteExceptions.h"
 
-QString ChatController::processPrompt(const QString &rawPrompt) const
+ChatController::ChatController() {}
+ChatController::~ChatController() {}
+
+QString ChatController::processPrompt(const QString &rawPrompt)
 {
     try {
         Prompt prompt(rawPrompt);
         if (!prompt.isValid())
             return prompt.validationError();
-        const QString promptForOllama = prompt.ollamaPrompt();
-        Q_UNUSED(promptForOllama);
-        return buildSimulatedResponse(prompt);
+        return ollamaProvider_.enviarMensaje(prompt.ollamaPrompt());
     } catch (const PromptVacioException &e) {
         return QString("[Error] ") + e.what();
     } catch (const ErrorConexionException &e) {

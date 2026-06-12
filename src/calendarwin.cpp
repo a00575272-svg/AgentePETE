@@ -13,6 +13,10 @@ calendarWin::calendarWin(QWidget *parent)
     currentMonth = QDate(currentMonth.year(), currentMonth.month(), 1);
     updateCalendar();
 
+    backButton_ = new QPushButton("💬 Volver al Chat", centralWidget());
+    backButton_->setGeometry(30, 410, 160, 30);
+    connect(backButton_, &QPushButton::clicked, this, &calendarWin::regresarAlChat);
+
     dayButtons = {
         ui->day1Button,
         ui->day2Button,

@@ -1,5 +1,7 @@
 #include "newtaskdialog.h"
 #include "ui_newtaskdialog.h"
+#include "Task.h"
+#include <filesystem>
 #include "dayagendadialog.h"
 #include <QMessageBox>
 #include <QDateTime>
@@ -20,13 +22,24 @@ NewTaskDialog::~NewTaskDialog()
 
 void NewTaskDialog::on_saveButton_clicked()
 {
-
-    QString titulo = ui->titleEdit->text();
-    QString description = ui->descriptionEdit->toPlainText();
+    QString titulo = ui->titleEdit->text().trimmed();
+    QString description = ui->descriptionEdit->toPlainText().trimmed();
     QDateTime fecha = ui->dueDateTimeEdit->dateTime();
 
+    if (titulo.isEmpty()) {
+        QMessageBox::warning(this, "Error", "El título no puede estar vacío");
+        return;
+    }
 
+    std::filesystem::create_directories("taskDir");
 
+    Task tarea(
+        fecha.date().day(),
+        fecha.date().month(),
+        fecha.date().year(),
+        titulo.toStdString(),
+        description.toStdString()
+    );
 
     accept();
 }
