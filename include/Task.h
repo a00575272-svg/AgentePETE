@@ -4,8 +4,6 @@
 #include <vector>
 #include "DayMonYear.h"
 
-int nowDMY(now part);
-
 class Task : public DayMonYear
 {
 private:
@@ -27,7 +25,6 @@ public:
     void taskDelet();
 
     static std::vector<Task> loadAllEntries();
-
 
 
 

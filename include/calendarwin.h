@@ -22,6 +22,9 @@ public:
     explicit calendarWin(QWidget *parent = nullptr);
     ~calendarWin() override;
 
+signals:
+    void regresarAlChat();
+
 private slots:
     void on_pushButton_13_clicked();
 
@@ -38,5 +41,6 @@ private:
     QDate currentMonth;
     void updateCalendar();
     QVector<QPushButton*> dayButtons;
+    QPushButton *backButton_;
 };
 #endif // CALENDARWIN_H

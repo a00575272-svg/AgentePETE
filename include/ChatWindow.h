@@ -8,12 +8,10 @@
 #include <QVBoxLayout>
 #include <QComboBox>
 #include "ChatController.h"
-#include <string>
+#include "calendarwin.h"
 
-class ChatWindow : public QMainWindow, public ChatController{
+class ChatWindow : public QMainWindow, public ChatController {
     Q_OBJECT
-//private:
-    //std::string modelsAvailable[] = {string("gemma3:4b")};
 
 public:
     explicit ChatWindow(QWidget *parent = nullptr);
@@ -28,6 +26,7 @@ private:
     QLabel      *modelLabel;
     QLabel      *answerLabel;
     QPushButton *sendPromptButton;
+    QPushButton *calendarButton;
     QComboBox   *modelCombobox;
     QLineEdit   *prompLineEdit;
     QTextEdit   *modelAnswer;

@@ -1,5 +1,7 @@
 #include "dayagendadialog.h"
 #include "ui_dayagendadialog.h"
+#include "Task.h"
+#include <filesystem>
 #include <QVBoxLayout>
 #include <QLabel>
 #include <QVBoxLayout>
@@ -17,12 +19,27 @@ DayAgendaDialog::DayAgendaDialog(const QDate &date, QWidget *parent)
 {
     ui->setupUi(this);
     QVBoxLayout *taskLayout = new QVBoxLayout(ui->taskScrollArea->widget());
+    Q_UNUSED(taskLayout);
 
     ui->dateLabel->setText(date.toString("dd/MM/yyyy"));
-    addTaskCard("Examen TC1030", "10:00", "Estudiar capítulos 1 y 2");
 
+    // Crear directorio de tareas si no existe
+    std::filesystem::create_directories("taskDir");
 
-
+    // Cargar tareas del día seleccionado
+    std::vector<Task> tareas = Task::loadAllEntries();
+    for (const Task &tarea : tareas) {
+        if (tarea.getDay()   == date.day()   &&
+            tarea.getMonth() == date.month() &&
+            tarea.getYear()  == date.year())
+        {
+            addTaskCard(
+                QString::fromStdString(tarea.getTitleTask()),
+                "",
+                QString::fromStdString(tarea.getDescriptionTask())
+            );
+        }
+    }
 }
 
 void DayAgendaDialog::addTaskCard(const QString &title,

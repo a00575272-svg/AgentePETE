@@ -26,7 +26,7 @@ const QString OllamaProvider::OLLAMA_URL = "http://localhost:11434/api/generate"
 
 OllamaProvider::OllamaProvider(QObject *parent)
     : QObject(parent)
-    , modelo_("gemma")   // Modelo por defecto (fácil de cambiar)
+    , modelo_("gemma4")   // Modelo por defecto (fácil de cambiar)
 {
 }
 
@@ -64,7 +64,8 @@ QString OllamaProvider::enviarMensaje(const QString &mensaje)
     QByteArray jsonBytes = QJsonDocument(cuerpo).toJson(QJsonDocument::Compact);
 
     // 2. Configurar la petición HTTP
-    QNetworkRequest request = QNetworkRequest(QUrl(OLLAMA_URL));
+    QUrl url(OLLAMA_URL);
+    QNetworkRequest request(url);
     request.setHeader(QNetworkRequest::ContentTypeHeader, "application/json");
 
     // 3. Enviar la petición (POST)

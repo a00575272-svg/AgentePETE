@@ -2,7 +2,6 @@
 
 #include <iostream>
 #include <chrono>
-//#include <date/date.h>
 
 
 
@@ -30,18 +29,17 @@ public:
 
 
 
- 
     /// GettersAndSetters
     /// Format set/get + OriginalName beginig with capital letter+()
     /// Examle  day -> getDay()/setDay()
-   
-    
 
-    std::string getTitleTask() {
+
+
+    std::string getTitleTask() const {
         return titleTask;
     }
 
-    std::string getDescriptionTask() {
+    std::string getDescriptionTask() const {
         return descriptionTask;
     }
 
@@ -69,7 +67,7 @@ public:
     void setYear(int y) {
         year = y;
     }
-    
+
 
 protected:
     void setTitleTask(const std::string& title) {
@@ -83,8 +81,4 @@ protected:
 
 
 
-
-
-
 };
-
